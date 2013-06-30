@@ -1,4 +1,3 @@
-require "guard/motion/frank/version"
 require 'guard'
 require 'guard/guard'
 
