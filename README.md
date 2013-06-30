@@ -9,10 +9,17 @@ guard-motion-frank will automatically run your [frank-cucumber](http://www.testi
     $ gem install guard-motion-frank
     
 or install with Bundler by adding these lines to your Gemfile:
+
     gem 'motion-frank'
     gem 'guard-motion-frank'
 then run:
+
     $ bundle install
+    
+Lastly, you need to add the following line to your Rakefile in order to enable the included rake tasks.
+
+    require 'guard/motion-frank/task'
+    
 
 ## Usage
 
@@ -23,4 +30,4 @@ When you're done, run the following commands from your project directory
 
 ## Guard options
 
-  No options supported yet.
+No options supported yet.

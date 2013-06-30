@@ -2,7 +2,7 @@ require 'guard'
 require 'guard/guard'
 
 module ::Guard
-  class MotionFrank < Guard::Guard
+  class MotionFrank < Guard
     # Initializes a Guard plugin.
     # Don't do any work here, especially as Guard plugins get initialized even if they are not in an active group!
     #
@@ -100,12 +100,14 @@ module ::Guard
           start_message = "Run #{features}"
         end
         UI.info start_message
-        system(command(features))
+        comm = command(features)
+        UI.info comm
+        system(comm)
       end
     
       def command(features)
         features = features.join(' ') if features.kind_of? Array
-        "rake build && cucumber #{features} --require features"
+        "rake frank:run:specific #{features}"
       end
   end
 end
