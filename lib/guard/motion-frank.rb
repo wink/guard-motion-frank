@@ -1,5 +1,7 @@
 require 'guard'
 require 'guard/guard'
+require 'rake'
+require 'guard/motion-frank/task'
 
 module ::Guard
   class MotionFrank < Guard
@@ -95,19 +97,15 @@ module ::Guard
       def run(features = [])
         if features.eql?("features") or features.empty?
           start_message = "Run all features"
+          features = 'features'
         else
           features = features.join(' ') if features.kind_of? Array
           start_message = "Run #{features}"
         end
         UI.info start_message
-        comm = command(features)
-        UI.info comm
-        system(comm)
-      end
-    
-      def command(features)
-        features = features.join(' ') if features.kind_of? Array
-        "rake frank:run:specific #{features}"
+        command = "rake frank:run:specific[#{features}]"
+        UI.info command
+        system command
       end
   end
 end
